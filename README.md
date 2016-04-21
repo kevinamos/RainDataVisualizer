@@ -1,5 +1,5 @@
 # RainDataVisualizer
-The program collects monthly rain data for a given number of Kenyan counties in a text file and creates bar graph representation 
+The program collects monthly rain data for a given number of Kenyan counties (county names are supplied via counties text file)using a form and creates a simple bar graph visualization of the data.The form only accepts data for counties that have not submited their rain data for that month. N/B the project is not fully complete.
 Requirements
 Django==1.9.5
 django-braces==1.8.1
