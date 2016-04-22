@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+
+ {% block form_block %}
+    
+  
+	<form method="post" action="{% url 'weather_chart_view' %}" >
+	   
+    
+	{% csrf_token %}
+
+
+	{% for f in form %}
+
+    <p style='color:white' >{{ f.name }}{{ f }}</p>
+
+
+	{% endfor %}
+ 	<button class="button button-block" style="width:80px; height:30px; font-size:15px;padding:0px;"/>View</button>
+
+
+{% endblock %} 

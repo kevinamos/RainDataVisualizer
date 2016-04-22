@@ -1,0 +1,70 @@
+
+
+
+{% extends "base.html" %}
+{% load staticfiles %} 
+
+
+ 
+  
+{% block message %}
+	
+
+
+    		{% if succesful_entry  %}
+
+		<h3 style='color:green;'>&#10004;{{ succesful_entry }}</h3><a href="{% url 'Home' %}">Back</a>
+	
+  		 {% endif %}
+
+	
+
+{% endblock %}
+
+        
+     
+{% block form_block %} 
+      
+      <div class="tab-content">
+        <div id="signup">   
+
+ 	{% if succesful_entry  %} 
+		<p> </p>
+ 		{% else %}
+	<!--{% if choose_county %}
+			<p style=" color:white; font-size:20px; left:70%;">{{ choose_county }}</p>
+		{% else %}
+			<h1>Please Enter Rain Data In The Form Below</h1>
+		{% endif %}
+	
+	<p style="  font-size:20px; left:70%;"> <a href="  {% url 'Choose_county'  %}">Graphical View of rain data</a></p>
+
+-->
+
+<h3 style='color:white;'>Please Enter Rain Data In The Form Below</h3>
+<p style="  font-size:20px; position:absolute;left:55%;"> <a href="  {% url 'Choose_county'  %}">Rainfall per county Chart</a></p></br>
+<p style="  font-size:20px; position:absolute;left:55%;"> <a href="  {% url 'Choose_Rainfall_Month_View'  %}">Rainfall per month Chart</a></p>
+
+{% endif %}
+
+     <form action="" method="post">
+	   
+    
+{% csrf_token %}
+
+
+{% for f in form %}
+
+    <p style='color:white' >{{ f.name }}{{ f }}</p>
+
+
+{% endfor %}
+    
+
+         
+       
+        
+ <button class="button button-block"/>Save</button>
+          
+  {% endblock %}         
+
