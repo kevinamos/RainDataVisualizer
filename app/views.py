@@ -1,44 +1,30 @@
-from django.shortcuts import render
-
-from django.http import HttpResponse
 from django.shortcuts import render_to_response
-from django.template import RequestContext
-
 from django.views.generic.edit import FormView
 from django.views.generic import TemplateView
-
-from .forms import RainfallDataForm,ViewCountiesForm, ViewmMonthsForm
-
-from .models import RainDataStore
-
-from chartit import DataPool, Chart
-
+from django.template import RequestContext
+from django.http import HttpResponse
+from django.shortcuts import render
 
 from chartit import PivotDataPool, PivotChart
-
-
+from chartit import DataPool, Chart
+from chartit import DataPool, Chart
 
 from highcharts.views import HighChartsBarView
 
-
-from chartit import DataPool, Chart
-
+from .forms import RainfallDataForm,ViewCountiesForm, ViewmMonthsForm
+from .models import RainDataStore
 
 
 class Home(FormView):
-
 	template_name='index.html'
         form_class = RainfallDataForm
         success_url = '/success/'
 
-	def post(self, request, *args, **kwargs):
-		
+	def post(self, request, *args, **kwargs):		
     		form_class = self.get_form_class()
     		form = self.get_form(form_class)
     		if form.is_valid():
-
-			form.save()
-			
+			form.save()			
         		return self.form_valid(form)
     		else:
         		return self.form_invalid(form)
@@ -62,9 +48,6 @@ class Choose_county_View(FormView):
 class Choose_Rainfall_Month_View(Choose_county_View):
 	template_name='view_county_rain_for_month.html'
 	form_class = ViewmMonthsForm
-	
-	
-
 
 class success(TemplateView):
 	template_name = "index.html"
@@ -72,19 +55,10 @@ class success(TemplateView):
 	
 	def get(self, request, *args, **kwargs):
         	context = locals()
-        	context['succesful_entry'] = self.succesful_entry
-        	
+        	context['succesful_entry'] = self.succesful_entry        	
         	return render_to_response(self.template_name, context, context_instance=RequestContext(request))
 
-
-
-
-
-
-
-
-def weather_chart_view(request):
-    
+def weather_chart_view(request):    
     county_name='Nairobi'
     if request.method == 'POST': # If the form has been submitted...
         	form = ViewCountiesForm(request.POST) # A form bound to the POST data
