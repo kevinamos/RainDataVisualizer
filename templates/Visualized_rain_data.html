@@ -1,0 +1,25 @@
+
+<head>
+
+{% load staticfiles %} 
+                                                                                                      
+
+
+    <!-- code to include the highcharts and jQuery libraries goes here -->
+    <!-- load_charts filter takes a comma-separated list of id's where -->
+    <!-- the charts need to be rendered to                             -->
+    {% load chartit %}
+    
+</head>
+<body style='background-color:silver;'>
+<a style='padding-left:15px;' href="{%  url 'Home' %}">Home</a>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"> </script>
+<script src="   {% static 'more_js/Highcharts-4.2.4/js/highcharts.js' %}   "></script>
+
+
+
+
+<div id='container'> {{ weatherchart|load_charts:"container" }} </div>
+
+</body>
