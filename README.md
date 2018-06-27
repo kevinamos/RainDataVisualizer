@@ -9,4 +9,4 @@ django-highcharts==0.1.7
 django-jquery==1.12.2
 simplejson==3.8.2
 six==1.10.0
- for chartit to work on this project navigate to (/site-packages/chartit/charts.py) and replace the line "from django.utils.datastructures import SortedDict" with "from collections import OrderedDict as SortedDictwith" 
+ for chartit to work on this project navigate to (/site-packages/chartit/charts.py) and replace the line "from django.utils.datastructures import SortedDict" with "from collections import OrderedDict as SortedDict" 
